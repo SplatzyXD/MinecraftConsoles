@@ -21,8 +21,8 @@ void Lighting::turnOn()
     glEnable(GL_LIGHT1);
     glEnable(GL_COLOR_MATERIAL);
     glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
-    float a = 0.4f;
-    float d = 0.6f;
+    float a = 0.3f;
+    float d = 0.7f;
     float s = 0.0f;
 
     Vec3 *l = Vec3::newTemp(0.2f, 1.0f, -0.7f)->normalize();

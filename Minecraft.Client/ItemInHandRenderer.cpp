@@ -307,7 +307,11 @@ void ItemInHandRenderer::renderItem(shared_ptr<LivingEntity> mob, shared_ptr<Ite
             glEnable(GL_BLEND);
             glBlendFunc(GL_SRC_COLOR, GL_ONE);
             float br = 0.76f;
-			glColor4f(0.5f * br, 0.25f * br, 0.8f * br, 1);		// MGH - for some reason this colour isn't making it through to the render, so I've added to the tesselator for the glint geom above
+			float glintTime = Minecraft::currentTimeMillis() / 500.0f;
+			float rGlint = (sinf(glintTime) * 0.5f + 0.5f) * br;
+			float gGlint = (sinf(glintTime + 2.0f) * 0.5f + 0.5f) * br;
+			float bGlint = (sinf(glintTime + 4.0f) * 0.5f + 0.5f) * br;
+			glColor4f(rGlint, gGlint, bGlint, 1.0f);
              glMatrixMode(GL_TEXTURE);
              glPushMatrix();
              float ss = 1 / 8.0f;

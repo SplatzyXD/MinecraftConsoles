@@ -851,11 +851,11 @@ void GameRenderer::updateLightTexture(float a)
 
 			float rs = sky * (skyDarken1 * 0.65f + 0.35f);
 			float gs = sky * (skyDarken1 * 0.65f + 0.35f);
-			float bs = sky;
+			float bs = sky * (skyDarken1 * 0.10f + 0.90f);
 
-			float rb = block;
-			float gb = block * ((block * 0.6f + 0.4f) * 0.6f + 0.4f);
-			float bb = block * ((block * block) * 0.6f + 0.4f);
+			float rb = block * 1.1f;
+			float gb = block * block * 0.85f + block * 0.15f;
+			float bb = block * block * block * 0.9f + block * 0.05f;
 
 			float _r = (rs + rb);
 			float _g = (gs + gb);
