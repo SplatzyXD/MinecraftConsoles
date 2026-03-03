@@ -1389,12 +1389,15 @@ void LivingEntity::travel(float xa, float ya)
 	if (isInWater() && !(thisPlayer && thisPlayer->abilities.flying) ) 
 	{
 		double yo = y;
-		moveRelative(xa, ya, useNewAi() ? 0.04f : 0.02f);
+		float speedMult = useNewAi() ? 0.04f : 0.02f;
+		if (thisPlayer) speedMult *= 1.5f;
+		moveRelative(xa, ya, speedMult);
 		move(xd, yd, zd);
 
-		xd *= 0.80f;
-		yd *= 0.80f;
-		zd *= 0.80f;
+		float drag = thisPlayer ? 0.85f : 0.80f;
+		xd *= drag;
+		yd *= drag;
+		zd *= drag;
 		yd -= 0.02;
 
 		if (horizontalCollision && isFree(xd, yd + 0.6f - y + yo, zd)) 
