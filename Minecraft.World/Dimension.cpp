@@ -31,7 +31,7 @@ void Dimension::updateLightRamp()
 	for (int i = 0; i <= Level::MAX_BRIGHTNESS; i++)
 	{
 		float v = (1 - i / (float) (Level::MAX_BRIGHTNESS));
-		brightnessRamp[i] = ((1 - v) / (v * 3 + 1)) * (1 - ambientLight) + ambientLight;
+		brightnessRamp[i] = ((1.0f - v) * (1.0f - v)) * (1.0f - ambientLight) + ambientLight;
 	}
 }
 
