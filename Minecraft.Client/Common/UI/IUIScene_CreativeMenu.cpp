@@ -533,7 +533,7 @@ void IUIScene_CreativeMenu::staticCtor()
 		{
 			shared_ptr<ItemInstance> debugSword = shared_ptr<ItemInstance>(new ItemInstance(Item::sword_diamond_Id, 1, 0));
 			debugSword->enchant( Enchantment::damageBonus, 50 );
-			debugSword->setHoverName(L"Sword of Kneebug");
+			debugSword->setHoverName(L"Sword of Debug");
 			list->push_back(debugSword);
 		}
 #endif

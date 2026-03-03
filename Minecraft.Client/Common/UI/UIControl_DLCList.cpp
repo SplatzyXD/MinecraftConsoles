@@ -2,10 +2,10 @@
 #include "UI.h"
 #include "UIControl_DLCList.h"
 
-bool UIControl_DLCList::setupControl(UIScene* scene, IggyValuePath* parent, const string& controlName)
+bool UIControl_DLCList::setupControl(UIScene *scene, IggyValuePath *parent, const string &controlName)
 {
 	UIControl::setControlType(UIControl::eDLCList);
-	bool success = UIControl_ButtonList::setupControl(scene, parent, controlName);
+	bool success = UIControl_ButtonList::setupControl(scene,parent,controlName);
 
 	//SlotList specific initialisers
 	m_funcShowTick = registerFastName(L"ShowTick");
@@ -13,7 +13,7 @@ bool UIControl_DLCList::setupControl(UIScene* scene, IggyValuePath* parent, cons
 	return success;
 }
 
-void UIControl_DLCList::addItem(const string& label, bool showTick, int iId)
+void UIControl_DLCList::addItem(const string &label, bool showTick, int iId)
 {
 	IggyDataValue result;
 	IggyDataValue value[3];
@@ -29,18 +29,18 @@ void UIControl_DLCList::addItem(const string& label, bool showTick, int iId)
 
 	value[2].type = IGGY_DATATYPE_boolean;
 	value[2].boolval = showTick;
-	IggyResult out = IggyPlayerCallMethodRS(m_parentScene->getMovie(), &result, getIggyValuePath(), m_addNewItemFunc, 3, value);
+	IggyResult out = IggyPlayerCallMethodRS ( m_parentScene->getMovie() , &result, getIggyValuePath(), m_addNewItemFunc , 3 , value );
 
 	++m_itemCount;
 }
 
-void UIControl_DLCList::addItem(const wstring& label, bool showTick, int iId)
+void UIControl_DLCList::addItem(const wstring &label, bool showTick, int iId)
 {
 	IggyDataValue result;
 	IggyDataValue value[3];
 
 	IggyStringUTF16 stringVal;
-	stringVal.string = (IggyUTF16*)label.c_str();
+	stringVal.string = (IggyUTF16 *)label.c_str();
 	stringVal.length = (S32)label.length();
 	value[0].type = IGGY_DATATYPE_string_UTF16;
 	value[0].string16 = stringVal;
@@ -50,7 +50,7 @@ void UIControl_DLCList::addItem(const wstring& label, bool showTick, int iId)
 
 	value[2].type = IGGY_DATATYPE_boolean;
 	value[2].boolval = showTick;
-	IggyResult out = IggyPlayerCallMethodRS(m_parentScene->getMovie(), &result, getIggyValuePath(), m_addNewItemFunc, 3, value);
+	IggyResult out = IggyPlayerCallMethodRS ( m_parentScene->getMovie() , &result, getIggyValuePath(), m_addNewItemFunc , 3 , value );
 
 	++m_itemCount;
 }
@@ -65,5 +65,5 @@ void UIControl_DLCList::showTick(int iId, bool showTick)
 
 	value[1].type = IGGY_DATATYPE_boolean;
 	value[1].boolval = showTick;
-	IggyResult out = IggyPlayerCallMethodRS(m_parentScene->getMovie(), &result, getIggyValuePath(), m_funcShowTick, 2, value);
+	IggyResult out = IggyPlayerCallMethodRS ( m_parentScene->getMovie() , &result, getIggyValuePath(), m_funcShowTick , 2 , value );
 }
