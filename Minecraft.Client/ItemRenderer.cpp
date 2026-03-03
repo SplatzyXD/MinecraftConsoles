@@ -509,7 +509,11 @@ void ItemRenderer::renderAndDecorateItem(Font *font, Textures *textures, const s
 
 		float blendFactor = isConstantBlended ? Gui::currentGuiBlendFactor : 1.0f;
 
-		glColor4f(0.5f * blendFactor, 0.25f * blendFactor, 0.8f * blendFactor, 1);		// 4J - scale back colourisation with blendFactor
+		float time = Minecraft::currentTimeMillis() / 500.0f;
+		float rCycle = sinf(time) * 0.5f + 0.5f;
+		float gCycle = sinf(time + 2.0f) * 0.5f + 0.5f;
+		float bCycle = sinf(time + 4.0f) * 0.5f + 0.5f;
+		glColor4f(rCycle * blendFactor, gCycle * blendFactor, bCycle * blendFactor, 1.0f);
 		// scale the x and y by the scale factor
 		if((fScaleX!=1.0f) ||(fScaleY!=1.0f))
 		{

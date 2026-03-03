@@ -1390,11 +1390,11 @@ void LivingEntity::travel(float xa, float ya)
 	{
 		double yo = y;
 		float speedMult = useNewAi() ? 0.04f : 0.02f;
-		if (thisPlayer) speedMult *= 1.5f;
+		if (thisPlayer) speedMult *= 0.8f;
 		moveRelative(xa, ya, speedMult);
 		move(xd, yd, zd);
 
-		float drag = thisPlayer ? 0.85f : 0.80f;
+		float drag = thisPlayer ? 0.75f : 0.80f;
 		xd *= drag;
 		yd *= drag;
 		zd *= drag;
