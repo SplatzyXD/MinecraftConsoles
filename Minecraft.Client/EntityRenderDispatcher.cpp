@@ -288,6 +288,11 @@ void EntityRenderDispatcher::render(shared_ptr<Entity> entity, double x, double 
 		renderer->render(entity, x, y, z, rot, a);
 		renderer->postRender(entity, x, y, z, rot, a, bRenderPlayerShadow);
 	}
+
+	if (options->renderDebug)
+	{
+		renderHitbox(entity, x, y, z, rot, a);
+	}
 }
 
 double EntityRenderDispatcher::distanceToSqr(double x, double y, double z)

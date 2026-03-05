@@ -163,6 +163,9 @@ void EntityRenderer::renderShadow(shared_ptr<Entity> e, double x, double y, doub
 
 	glDepthMask(false);
 	float r = shadowRadius;
+	if (entityRenderDispatcher->options->fancyGraphics) {
+		r *= 1.5f;
+	}
 	float fYLocalPlayerShadowOffset=0.0f;
 
 	if (e->instanceof(eTYPE_MOB))
@@ -235,6 +238,9 @@ void EntityRenderer::renderTileShadow(Tile *tt, double x, double y, double z, in
 	if (!tt->isCubeShaped()) return;
 
 	double a = ((pow - (y - (yt + yo)) / 2) * 0.5f) * getLevel()->getBrightness(xt, yt, zt);
+	if (entityRenderDispatcher->options->fancyGraphics) {
+		a *= 1.5;
+	}
 	if (a < 0) return;
 	if (a > 1) a = 1;
 	

@@ -880,6 +880,13 @@ void GameRenderer::updateLightTexture(float a)
 				_b = (0.25f + bb * 0.75f);
 			}
 
+			if (mc->options->fancyGraphics)
+			{
+				_r *= 1.2f;
+				_g *= 1.2f;
+				_b *= 1.2f;
+			}
+
 			if (player->hasEffect(MobEffect::nightVision))
 			{
 				float scale = getNightVisionScale(player, a);
